@@ -1,0 +1,604 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/ ;CarShop_DWH",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": ".",
+            "database": "CarShop_DWH"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "dim_customers",
+        "columns": [
+          {
+            "name": "customer_key",
+            "dataType": "int64",
+            "sourceColumn": "customer_key"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "int64",
+            "sourceColumn": "customer_id"
+          },
+          {
+            "name": "name",
+            "dataType": "string",
+            "sourceColumn": "name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_dim_customers = Source{[Schema=\"dbo\",Item=\"dim_customers\"]}[Data]",
+                "in",
+                "    dbo_dim_customers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month"
+          },
+          {
+            "name": "year",
+            "dataType": "int64",
+            "sourceColumn": "year"
+          },
+          {
+            "name": "day_name",
+            "dataType": "string",
+            "sourceColumn": "day_name"
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name"
+          },
+          {
+            "name": "date_id",
+            "dataType": "int64",
+            "sourceColumn": "date_id"
+          },
+          {
+            "name": "date",
+            "dataType": "string",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "day_of_month",
+            "dataType": "int64",
+            "sourceColumn": "day_of_month"
+          },
+          {
+            "name": "week_of_month",
+            "dataType": "int64",
+            "sourceColumn": "week_of_month"
+          },
+          {
+            "name": "week_of_year",
+            "dataType": "int64",
+            "sourceColumn": "week_of_year"
+          },
+          {
+            "name": "quarter",
+            "dataType": "int64",
+            "sourceColumn": "quarter"
+          },
+          {
+            "name": "is_weekend",
+            "dataType": "boolean",
+            "sourceColumn": "is_weekend"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_dim_date = Source{[Schema=\"dbo\",Item=\"dim_date\"]}[Data]",
+                "in",
+                "    dbo_dim_date"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_products",
+        "columns": [
+          {
+            "name": "product_key",
+            "dataType": "int64",
+            "sourceColumn": "product_key"
+          },
+          {
+            "name": "product_id",
+            "dataType": "int64",
+            "sourceColumn": "product_id"
+          },
+          {
+            "name": "product_name",
+            "dataType": "string",
+            "sourceColumn": "product_name"
+          },
+          {
+            "name": "category_id",
+            "dataType": "int64",
+            "sourceColumn": "category_id"
+          },
+          {
+            "name": "category_name",
+            "dataType": "string",
+            "sourceColumn": "category_name"
+          },
+          {
+            "name": "brand_id",
+            "dataType": "int64",
+            "sourceColumn": "brand_id"
+          },
+          {
+            "name": "brand_name",
+            "dataType": "string",
+            "sourceColumn": "brand_name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_dim_products = Source{[Schema=\"dbo\",Item=\"dim_products\"]}[Data]",
+                "in",
+                "    dbo_dim_products"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_staff",
+        "columns": [
+          {
+            "name": "staff_key",
+            "dataType": "int64",
+            "sourceColumn": "staff_key"
+          },
+          {
+            "name": "staff_id",
+            "dataType": "int64",
+            "sourceColumn": "staff_id"
+          },
+          {
+            "name": "first_name",
+            "dataType": "string",
+            "sourceColumn": "first_name"
+          },
+          {
+            "name": "last_name",
+            "dataType": "string",
+            "sourceColumn": "last_name"
+          },
+          {
+            "name": "email",
+            "dataType": "string",
+            "sourceColumn": "email"
+          },
+          {
+            "name": "store_id",
+            "dataType": "int64",
+            "sourceColumn": "store_id"
+          },
+          {
+            "name": "manager_id",
+            "dataType": "int64",
+            "sourceColumn": "manager_id"
+          },
+          {
+            "name": "manager_first_name",
+            "dataType": "string",
+            "sourceColumn": "manager_first_name"
+          },
+          {
+            "name": "manager_last_name",
+            "dataType": "string",
+            "sourceColumn": "manager_last_name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_dim_staff = Source{[Schema=\"dbo\",Item=\"dim_staff\"]}[Data]",
+                "in",
+                "    dbo_dim_staff"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_stores",
+        "columns": [
+          {
+            "name": "store_key",
+            "dataType": "int64",
+            "sourceColumn": "store_key"
+          },
+          {
+            "name": "store_id",
+            "dataType": "int64",
+            "sourceColumn": "store_id"
+          },
+          {
+            "name": "store_name",
+            "dataType": "string",
+            "sourceColumn": "store_name"
+          },
+          {
+            "name": "phone",
+            "dataType": "string",
+            "sourceColumn": "phone"
+          },
+          {
+            "name": "email",
+            "dataType": "string",
+            "sourceColumn": "email"
+          },
+          {
+            "name": "street",
+            "dataType": "string",
+            "sourceColumn": "street"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city"
+          },
+          {
+            "name": "state",
+            "dataType": "string",
+            "sourceColumn": "state"
+          },
+          {
+            "name": "zip_code",
+            "dataType": "string",
+            "sourceColumn": "zip_code"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_dim_stores = Source{[Schema=\"dbo\",Item=\"dim_stores\"]}[Data]",
+                "in",
+                "    dbo_dim_stores"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fact_orders",
+        "columns": [
+          {
+            "name": "order_key",
+            "dataType": "int64",
+            "sourceColumn": "order_key"
+          },
+          {
+            "name": "order_id",
+            "dataType": "int64",
+            "sourceColumn": "order_id"
+          },
+          {
+            "name": "customer_key",
+            "dataType": "int64",
+            "sourceColumn": "customer_key"
+          },
+          {
+            "name": "product_key",
+            "dataType": "int64",
+            "sourceColumn": "product_key"
+          },
+          {
+            "name": "staff_key",
+            "dataType": "int64",
+            "sourceColumn": "staff_key"
+          },
+          {
+            "name": "store_key",
+            "dataType": "int64",
+            "sourceColumn": "store_key"
+          },
+          {
+            "name": "date_key_order",
+            "dataType": "int64",
+            "sourceColumn": "date_key_order"
+          },
+          {
+            "name": "date_key_required",
+            "dataType": "int64",
+            "sourceColumn": "date_key_required"
+          },
+          {
+            "name": "date_key_shipped",
+            "dataType": "int64",
+            "sourceColumn": "date_key_shipped"
+          },
+          {
+            "name": "quantity",
+            "dataType": "int64",
+            "sourceColumn": "quantity"
+          },
+          {
+            "name": "unit_price",
+            "dataType": "double",
+            "sourceColumn": "unit_price"
+          },
+          {
+            "name": "discount",
+            "dataType": "double",
+            "sourceColumn": "discount"
+          },
+          {
+            "name": "total_sales_amount",
+            "dataType": "double",
+            "sourceColumn": "total_sales_amount"
+          },
+          {
+            "name": "total_discount_amount",
+            "dataType": "double",
+            "sourceColumn": "total_discount_amount"
+          },
+          {
+            "name": "net_sales_amount",
+            "dataType": "double",
+            "sourceColumn": "net_sales_amount"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_fact_orders = Source{[Schema=\"dbo\",Item=\"fact_orders\"]}[Data]",
+                "in",
+                "    dbo_fact_orders"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Number of Orders",
+            "expression": " COUNTROWS(DISTINCT(fact_orders[order_id]))"
+          },
+          {
+            "name": "Repeat Customer Rate",
+            "expression": [
+              "",
+              "VAR CustomerOrderCounts =",
+              "    ADDCOLUMNS(",
+              "        VALUES( fact_orders[customer_key]),",
+              "        \"OrderCount\", CALCULATE(DISTINCTCOUNT(fact_orders[order_id]))",
+              "    )",
+              "VAR RepeatCustomers =",
+              "    FILTER(CustomerOrderCounts, [OrderCount] > 1)",
+              "RETURN",
+              "DIVIDE(",
+              "    COUNTROWS(RepeatCustomers),",
+              "    COUNTROWS(CustomerOrderCounts),",
+              "    0",
+              ")"
+            ]
+          },
+          {
+            "name": "Total Stock Quantity",
+            "expression": [
+              "",
+              "SUM(fact_stocks[quantity])",
+              ""
+            ]
+          },
+          {
+            "name": "Out of Stock Items",
+            "expression": [
+              "",
+              "COUNTROWS(",
+              "    FILTER(",
+              "        fact_stocks,",
+              "        fact_stocks[quantity] = 0",
+              "    )",
+              ")",
+              ""
+            ]
+          },
+          {
+            "name": "Late Shipments Count",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    DISTINCTCOUNT(fact_orders[order_id]),",
+              "    FILTER(",
+              "        fact_orders,",
+              "        fact_orders[date_key_shipped] > fact_orders[date_key_required]",
+              "    )",
+              ")"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "fact_stocks",
+        "columns": [
+          {
+            "name": "store_id",
+            "dataType": "int64",
+            "sourceColumn": "store_id"
+          },
+          {
+            "name": "product_id",
+            "dataType": "int64",
+            "sourceColumn": "product_id"
+          },
+          {
+            "name": "quantity",
+            "dataType": "int64",
+            "sourceColumn": "quantity"
+          },
+          {
+            "name": "product_key",
+            "dataType": "int64",
+            "sourceColumn": "product_key"
+          },
+          {
+            "name": "store_key_lkp",
+            "dataType": "int64",
+            "sourceColumn": "store_key_lkp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;CarShop_DWH\",",
+                "    dbo_fact_stocks = Source{[Schema=\"dbo\",Item=\"fact_stocks\"]}[Data]",
+                "in",
+                "    dbo_fact_stocks"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "6c875562-7991-45df-b945-41f6d848711d",
+        "fromTable": "fact_orders",
+        "fromColumn": "customer_key",
+        "toTable": "dim_customers",
+        "toColumn": "customer_key"
+      },
+      {
+        "name": "8efd294f-387d-4dc4-be5d-f4330f3820fe",
+        "fromTable": "fact_orders",
+        "fromColumn": "product_key",
+        "toTable": "dim_products",
+        "toColumn": "product_key"
+      },
+      {
+        "name": "d6c0fde6-a6e7-4927-9d71-f0151c42fbe9",
+        "fromTable": "fact_orders",
+        "fromColumn": "staff_key",
+        "toTable": "dim_staff",
+        "toColumn": "staff_key"
+      },
+      {
+        "name": "6103be78-f29b-45e5-8910-cbc64df29668",
+        "fromTable": "fact_orders",
+        "fromColumn": "store_key",
+        "toTable": "dim_stores",
+        "toColumn": "store_key"
+      },
+      {
+        "name": "262d5470-e5eb-4bc1-92d9-40d2b34c443e",
+        "fromTable": "fact_orders",
+        "fromColumn": "date_key_order",
+        "toTable": "dim_date",
+        "toColumn": "date_id"
+      },
+      {
+        "name": "d839527c-d526-4bbd-90e1-cbe95410f5df",
+        "fromTable": "fact_orders",
+        "fromColumn": "date_key_required",
+        "toTable": "dim_date",
+        "toColumn": "date_id",
+        "isActive": false
+      },
+      {
+        "name": "2d0b3250-6030-4345-9940-d0a0d325864a",
+        "fromTable": "fact_orders",
+        "fromColumn": "date_key_shipped",
+        "toTable": "dim_date",
+        "toColumn": "date_id",
+        "isActive": false
+      },
+      {
+        "name": "53343e93-28f9-4064-a993-8e5e09a9ed2f",
+        "fromTable": "fact_stocks",
+        "fromColumn": "product_key",
+        "toTable": "dim_products",
+        "toColumn": "product_key"
+      },
+      {
+        "name": "03b9b908-6aab-47ae-a9b2-cfcf8829b4f9",
+        "fromTable": "fact_stocks",
+        "fromColumn": "store_key_lkp",
+        "toTable": "dim_stores",
+        "toColumn": "store_key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
