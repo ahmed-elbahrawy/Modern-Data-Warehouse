@@ -1,10 +1,10 @@
-Modern Data Warehouse for Bicycle Sales Analytics
+# Modern Data Warehouse for Bicycle Sales Analytics
 This project delivers an end-to-end Data Warehouse (DWH) solution for a fictional bicycle sales operation using the Microsoft BI stack. It enables advanced analytics and executive-level reporting across sales, inventory, and operational efficiency using the Medallion Architecture (ODS → STG → DWH).
 
 🚴♂️ Project Overview
 Purpose: Enable robust analytical insights and BI reporting for sales and inventory operations.
 
-Architecture: Medallion Architecture (ODS → STG → DWH).
+Architecture: ## Medallion Architecture (ODS → STG → DWH).
 
 Tools Used:
 
@@ -20,7 +20,7 @@ Power BI
 
 Visual Studio 2019
 
-📊 Data Model
+## 📊 Data Model
 Conceptual Schema: Star Schema
 
 Fact Tables:
@@ -48,7 +48,7 @@ dim_date
 ERD:
 Included in the repo: conceptual-model.jpg
 
-⚙️ ETL Pipeline (SSIS)
+## ⚙️ ETL Pipeline (SSIS)
 Modular ETL packages for ODS → STG and STG → DWH.
 
 Incremental loading for orders and customer data.
@@ -57,12 +57,12 @@ Data cleansing, standardization, validation, and referential integrity.
 
 Logging and configuration for scalable execution.
 
-🗄️ DWH Backup
+## 🗄️ DWH Backup
 Cleaned, validated production-ready schema.
 
 .bak backup included (DWH_Bicycle.bak).
 
-📈 Analytics Model (SSAS)
+## 📈 Analytics Model (SSAS)
 Clean tabular model built on processed DWH tables.
 
 Measures & Calculated Columns include:
@@ -81,12 +81,12 @@ Late Shipments Count
 
 Out of Stock Items
 
-📊 Power BI Dashboard
+## 📊 Power BI Dashboard
 Interactive dashboard with real-time analytics, connected to SSAS model.
 
 Pages:
 
-Landing Page: Navigation & project overview.
+## Landing Page: Navigation & project overview.
 
 Main Analytics: Sales breakdown by category, brand, store, employee KPIs, revenue trends.
 
@@ -108,7 +108,7 @@ Process the SSAS Model for analytics.
 
 Open Power BI Report and connect to the SSAS data source.
 
-🥇 Skills & Features
+## 🥇 Skills & Features
 Modern, modular ETL/ELT development.
 
 Star schema modeling for KPI analytics.
