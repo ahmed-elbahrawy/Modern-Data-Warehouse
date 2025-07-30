@@ -1,5 +1,3 @@
-:
-
 Modern Data Warehouse for Bicycle Sales Analytics
 This project delivers an end-to-end Data Warehouse (DWH) solution for a fictional bicycle sales operation using the Microsoft BI stack. It enables advanced analytics and executive-level reporting across sales, inventory, and operational efficiency using the Medallion Architecture (ODS → STG → DWH).
 
